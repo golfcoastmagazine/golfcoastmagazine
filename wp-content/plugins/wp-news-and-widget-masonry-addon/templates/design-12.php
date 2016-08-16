@@ -1,0 +1,45 @@
+<div class="wpnwm-news-grid news-grid wpnwm-medium-<?php echo $grid_clmn; ?> wpnwm-columns">
+	<div class="news-grid-content <?php if ( !has_post_thumbnail() ) { echo 'no-thumb-image'; } ?>">
+		
+		<?php if ( has_post_thumbnail() ) { ?>
+		<div class="news-image-bg">
+			<a href="<?php echo $post_link; ?>" target="<?php echo $link_target; ?>">
+				<img src="<?php echo $post_featured_image; ?>" alt="<?php _e('Post Image', 'sp-news-and-widget'); ?>" />
+			</a>
+		</div>
+		<?php } ?>
+		
+		<h3 class="news-title">
+			<a href="<?php echo $post_link; ?>" target="<?php echo $link_target; ?>"><?php the_title(); ?></a>
+		</h3>
+		
+		<?php if($showContent == "true") { ?>
+			<div class="news-content">
+				
+				<div><?php echo wpnwm_get_post_excerpt( $post->ID, get_the_content(), $words_limit, $content_tail ); ?></div>
+				
+				<?php if($showreadmore == 'true') { ?>
+					<a href="<?php echo $post_link; ?>" target="<?php echo $link_target; ?>" class="readmorebtn"><?php esc_html_e( 'Read More', 'sp-news-and-widget'); ?></a>
+				<?php } ?>
+				
+			</div><!-- end .news-content -->
+		<?php } ?>
+
+		<div class="news-loop-meta">
+			<?php if($showDate == "true") {  ?>	
+				<div class="news-date">
+					<?php echo get_the_date(); ?>
+				</div><!-- end .news-date -->
+			<?php } ?>
+				
+			<?php if($showCategory == "true" && $cate_name !='') { ?>
+			<div class="news-categories">
+				<?php echo $cate_name; ?>
+			</div>
+			<?php } ?>
+		</div><!-- end .news-loop-meta -->
+		
+		<?php do_action( 'wpnwm_news_content_bottom', $post, $shortcode_atts ); ?>
+
+	</div><!-- end .news-grid-content -->
+</div><!-- end .wpnwm-news-grid -->
