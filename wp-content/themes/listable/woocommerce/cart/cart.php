@@ -15,11 +15,11 @@ wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
-<form action="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" method="post">
+<form action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
 <?php do_action( 'woocommerce_before_cart_table' ); ?>
 
-<div class="cart">
+<div class="shop_table cart">
 <table>
 
 	<thead class="cart__header">
@@ -40,7 +40,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 		if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 			?>
-			<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart__item', $cart_item, $cart_item_key ) ); ?>">
+			<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart__item  cart_item', $cart_item, $cart_item_key ) ); ?>">
 
 				<td>
 				<div class="product__details">
@@ -73,7 +73,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								}
 								?>
 									<?php if ( ! $_product->is_sold_individually() ): ?>
-										<span class="product__quantity"> &times;
+										<span class="product__quantity  product-quantity"> &times;
 										<?php
 											$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
 											echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key );

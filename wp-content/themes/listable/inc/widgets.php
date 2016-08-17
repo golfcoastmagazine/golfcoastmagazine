@@ -764,7 +764,7 @@ class Front_Page_Listing_Cards_Widget extends WP_Widget {
 											<?php }
 										} ?>
 
-										<?php if ( ! is_wp_error( $terms ) && ( is_array( $terms ) || is_object( $terms ) ) ) : ?>
+										<?php if ( ! is_wp_error( $terms ) && ( is_array( $terms ) || is_object( $terms ) ) ) { ?>
 
 											<ul class="card__tags">
 												<?php foreach ( $terms as $term ) {
@@ -783,11 +783,15 @@ class Front_Page_Listing_Cards_Widget extends WP_Widget {
 												<?php } ?>
 											</ul>
 
-										<?php endif; ?>
+										<?php }
 
-										<div class="address  card__address">
-											<?php echo listable_display_formatted_address( $post ); ?>
-										</div>
+										$listing_address = listable_get_formatted_address( $post );
+
+										if ( ! empty( $listing_address ) ) { ?>
+											<div class="address  card__address">
+												<?php echo $listing_address; ?>
+											</div>
+										<?php } ?>
 									</footer>
 								</div><!-- .card__content -->
 							</article><!-- .card.card--listing -->

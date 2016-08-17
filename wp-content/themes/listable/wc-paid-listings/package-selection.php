@@ -65,11 +65,10 @@
 				<div class="package  <?php echo $product->is_featured()  == 'yes' ? 'package--featured' : ''; ?>">
 					<?php if ( $product->is_featured()  == 'yes' ): ?>
 						<?php $tags = get_the_terms($product->id, 'product_tag');
-							if ( ! is_wp_error( $tags ) && ! empty($tags) ) {
-								$tag = $tags[0]; ?>
-								<div class="featured-label"><?php _e('Most Popular', 'listable'); ?></div>
-							<?php }
-						?>
+						if ( ! is_wp_error( $tags ) && ! empty($tags) ) {
+							$tag = $tags[0]; ?>
+							<div class="featured-label"><?php echo $tag->name; ?></div>
+						<?php } ?>
 					<?php endif; ?>
 					<h2 class="package__title">
 						<?php echo $product->get_title(); ?>

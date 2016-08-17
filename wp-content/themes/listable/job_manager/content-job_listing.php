@@ -52,7 +52,7 @@ $listing_classes = apply_filters( 'listable_listing_archive_classes', $listing_c
 	         data-latitude="<?php echo esc_attr( get_post_meta( $post->ID, 'geolocation_lat', true ) ); ?>"
 	         data-longitude="<?php echo esc_attr( get_post_meta( $post->ID, 'geolocation_long', true ) ); ?>"
 	         data-img="<?php echo esc_attr( listable_get_post_image_src( $post->ID, 'listable-card-image' ) ); ?>"
-	         data-permalink="<?php esc_attr( the_job_permalink() ); ?>"
+	         data-permalink="<?php esc_attr( get_the_job_permalink( $post ) ); ?>"
 	         data-categories="<?php echo esc_attr( $termString ); ?>"
 		<?php echo $data_output; ?> >
 		<aside class="card__image" style="background-image: url(<?php echo listable_get_post_image_src( $post->ID, 'listable-card-image' ); ?>);">
@@ -109,10 +109,15 @@ $listing_classes = apply_filters( 'listable_listing_archive_classes', $listing_c
 							</li>
 						<?php } ?>
 					</ul><!-- .card__tags -->
+				<?php }
+
+				$listing_address = listable_get_formatted_address( $post );
+
+				if ( ! empty( $listing_address ) ) { ?>
+					<div class="address  card__address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+						<?php echo $listing_address ?>
+					</div>
 				<?php } ?>
-				<div class="address  card__address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-					<?php echo listable_display_formatted_address( $post ); ?>
-				</div>
 			</footer>
 		</div><!-- .card__content -->
 	</article><!-- .card.card--listing -->

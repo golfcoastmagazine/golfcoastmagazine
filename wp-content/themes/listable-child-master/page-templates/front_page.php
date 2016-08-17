@@ -12,6 +12,8 @@ global $post; ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+
 			<?php
 			while ( have_posts() ) : the_post();
 				// we'll return a random attachment from image and videos background lists, if one is present
@@ -55,6 +57,52 @@ global $post; ?>
 						</div>
 
 					</header>
+
+
+                    <?php
+
+                    $args = array(
+                        'posts_per_page'    => 3,
+                    );
+
+                    // the query
+                    $the_query = new WP_Query( $args ); ?>
+
+                    <?php if ( $the_query->have_posts() ) : ?>
+
+                        <!-- pagination here -->
+
+                    <div class="stories">
+
+                        <div class="container">
+
+                            <!-- the loop -->
+                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+                                <div class="col-md-4 col-sm-4">
+                                    <?php
+
+                                    get_template_part( 'template-parts/content', get_post_format() );
+
+                                    ?>
+                                </div>
+
+                            <?php endwhile; ?>
+                            <!-- end of the loop -->
+
+                        </div>
+
+                    </div>
+
+
+                        <!-- pagination here -->
+
+                        <?php wp_reset_postdata(); ?>
+
+                    <?php else : ?>
+                        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                    <?php endif; ?>
+
 
 					<?php if ( $post->post_content ): ?>
 						<div class="entry-content">

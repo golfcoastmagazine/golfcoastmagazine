@@ -24,3 +24,15 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 If you wish however, you can copy the whole style.css file from the parent here and hack at it - see functions.php for more details.
 In that case please remember that you still need to retain the header above (replace the header of the parent style.css with the one above),
 specifically the 'Template: listable' line. */
+
+p{
+    font-family: Raleway;
+}
+
+.stories{
+    margin-top: 20px;
+}
+
+.page-template-front_page .page .entry-content {
+    padding-top: 10px;
+}
