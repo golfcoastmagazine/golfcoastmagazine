@@ -12,7 +12,7 @@
 	<?php if ( has_post_thumbnail() ) {
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'listable-card-image' ); ?>
 		<a href="<?php the_permalink(); ?>">
-			<aside class="card__image" style="background-image: url('<?php echo $image[0]; ?>')"></aside>
+            <aside class="card__image" style="background-image: url('<?php echo listable_get_inline_background_image( $image[0] ); ?>')"></aside>
 		</a>
 	<?php } else { ?>
 		<a href="<?php the_permalink(); ?>">

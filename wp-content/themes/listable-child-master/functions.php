@@ -51,6 +51,10 @@ function listable_child_enqueue_styles() {
 
     wp_enqueue_style( 'bootstrap-style', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
 
+    wp_enqueue_style( 'fontawesome-style', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
+    wp_enqueue_style( 'googlefont-pontano-style', 'https://fonts.googleapis.com/css?family=Pontano+Sans' );
+    wp_enqueue_style( 'googlefont-roboto-style', 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i' );
+
 	// Here we are adding the child style.css while still retaining
 	// all of the parents assets (style.css, JS files, etc)
 	wp_enqueue_style( 'listable-child-style',

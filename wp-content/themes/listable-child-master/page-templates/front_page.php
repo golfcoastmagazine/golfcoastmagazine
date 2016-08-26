@@ -18,6 +18,7 @@ global $post; ?>
 			while ( have_posts() ) : the_post();
 				// we'll return a random attachment from image and videos background lists, if one is present
 				$the_random_hero = listable_get_random_hero_object();
+
 				$has_image       = false; ?>
 
 				<?php if ( ( empty( $the_random_hero ) || property_exists( $the_random_hero, 'post_mime_type' ) || strpos( $the_random_hero->post_mime_type, 'video' ) !== false ) && is_object( $the_random_hero ) && property_exists( $the_random_hero, 'post_mime_type' ) && strpos( $the_random_hero->post_mime_type, 'image' ) !== false ) {
@@ -59,57 +60,733 @@ global $post; ?>
 					</header>
 
 
-                    <?php
+<!-- custom development start  -->
 
-                    $args = array(
-                        'posts_per_page'    => 3,
-                    );
+<div class="blog-home">
+        <div class="container">
+            <div class="row">
 
-                    // the query
-                    $the_query = new WP_Query( $args ); ?>
+                <div class="col-md-8 col-sm-9">
 
-                    <?php if ( $the_query->have_posts() ) : ?>
+                    <div class="row blog-widget-container">
 
-                        <!-- pagination here -->
+                        <div class="col-md-12">
+                            <h4 class="section-title"><span>Our Stories</span></h4>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
 
-                    <div class="stories">
+                            <article class="blog-widget">
 
-                        <div class="container">
 
-                            <!-- the loop -->
-                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <div class="blog-widget-top">
 
-                                <div class="col-md-4 col-sm-4">
-                                    <?php
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                    </div>
 
-                                    get_template_part( 'template-parts/content', get_post_format() );
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <a href="">
+                                                <h2>Lorem ipsum dolor sit amet</h2>
+                                            </a>
+                                        </div>
 
-                                    ?>
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
 
-                            <?php endwhile; ?>
-                            <!-- end of the loop -->
 
+                                <div class="blog-excerpt">
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+
+                                </div>
+
+
+
+                            </article>
+
+
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6">
+                            <article class="blog-widget">
+
+                                <div class="blog-widget-top">
+
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <h2>Lorem ipsum dolor sit amet</h2>
+                                        </div>
+
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="blog-excerpt">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+                                </div>
+
+                            </article>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <article class="blog-widget">
+
+
+                                <div class="blog-widget-top">
+
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                    </div>
+
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <a href="">
+                                                <h2>Lorem ipsum dolor sit amet</h2>
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="blog-excerpt">
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+
+                                </div>
+
+
+
+                            </article>
+
+
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6">
+                            <article class="blog-widget">
+
+                                <div class="blog-widget-top">
+
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <h2>Lorem ipsum dolor sit amet</h2>
+                                        </div>
+
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="blog-excerpt">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+                                </div>
+
+                            </article>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <article class="blog-widget">
+
+
+                                <div class="blog-widget-top">
+
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                    </div>
+
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <a href="">
+                                                <h2>Lorem ipsum dolor sit amet</h2>
+                                            </a>
+                                        </div>
+
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="blog-excerpt">
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+
+                                </div>
+
+
+
+                            </article>
+
+
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6">
+                            <article class="blog-widget">
+
+                                <div class="blog-widget-top">
+
+                                    <div class="widget-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+
+                                    <div class="blog-widget-top-content">
+                                        <div class="blog-home-title">
+                                            <h2>Lorem ipsum dolor sit amet</h2>
+                                        </div>
+
+                                        <div class="blog-category">
+                                            <a href="" class="btn gcm-btn">Golf</a>
+                                            <a href="" class="btn gcm-btn">Golf Coast News</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="blog-excerpt">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+
+                                    <div class="blog-meta">
+                                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                    </div>
+                                </div>
+
+                            </article>
+                        </div>
+
+
+                        <div class="col-md-12 home-load-more">
+                            <button class="btn center-block">load more stories </button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="<?= get_stylesheet_directory_uri(); ?>/images/rec728@2x.jpg"/>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h4 class="section-title"><span>Featured Stories</span></h4>
+
+                            <div class="featured-stories">
+
+                                <div class="featured-widget">
+                                    <div class="row">
+
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="featured-widget-thumbnail">
+                                                <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="featured-story-title">
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                            </div>
+                                            <div class="featured-story-category">
+                                                <a href="">Golf</a>
+                                                <a href="">Golf Coast News</a>
+                                            </div>
+
+                                            <div class="featured-story-excerpt">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                            </div>
+
+                                            <div class="blog-meta">
+                                                <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                                <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="featured-widget">
+                                    <div class="row">
+
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="featured-widget-thumbnail">
+                                                <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="featured-story-title">
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                            </div>
+
+                                            <div class="featured-story-category">
+                                                <a href="">Golf</a>
+                                                <a href="">Golf Coast News</a>
+                                            </div>
+
+                                            <div class="featured-story-excerpt">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                            </div>
+
+                                            <div class="blog-meta">
+                                                <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                                <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="featured-widget">
+                                    <div class="row">
+
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="featured-widget-thumbnail">
+                                                <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="featured-story-title">
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                            </div>
+                                            <div class="featured-story-category">
+                                                <a href="">Golf</a>
+                                                <a href="">Golf Coast News</a>
+                                            </div>
+
+                                            <div class="featured-story-excerpt">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                            </div>
+
+                                            <div class="blog-meta">
+                                                <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                                <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="featured-widget">
+                                    <div class="row">
+
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="featured-widget-thumbnail">
+                                                <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="featured-story-title">
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                            </div>
+
+                                            <div class="featured-story-category">
+                                                <a href="">Golf</a>
+                                                <a href="">Golf Coast News</a>
+                                            </div>
+
+                                            <div class="featured-story-excerpt">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                            </div>
+
+                                            <div class="blog-meta">
+                                                <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                                                <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 home-load-more">
+                            <button class="btn center-block">load more featured stories </button>
                         </div>
 
                     </div>
 
 
-                        <!-- pagination here -->
 
-                        <?php wp_reset_postdata(); ?>
-
-                    <?php else : ?>
-                        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                    <?php endif; ?>
+<!-- featured stories start -->
 
 
-					<?php if ( $post->post_content ): ?>
-						<div class="entry-content">
-							<?php the_content(); ?>
-						</div>
-					<?php endif; ?>
-					<!-- .entry-content -->
+<!-- featured stories end -->
+
+                </div>
+
+
+                <!--     sidebar      -->
+                <div class="col-md-4 col-sm-3">
+
+                    <div class="social-count">
+                        <h4 class="widget-title"><span>Stay Connected</span></h4>
+                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/stay.jpg"/>
+
+                    </div>
+
+                    <div class="home-ad-1">
+                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/ad-300x250.jpg" alt=""/>
+                    </div>
+
+                    <div class="home-recent-stories">
+                        <h4 class="widget-title"><span>Featured Stories</span></h4>
+
+                        <div class="recent-story-widget">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="recent-story-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="recent-story-title">
+                                        <a href=""><h3>Lorem ipsum dolor sit amet</h3></a>
+                                    </div>
+
+                                    <div class="recent-story-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-story-widget">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="recent-story-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="recent-story-title">
+                                        <h3>Lorem ipsum dolor sit amet</h3>
+                                    </div>
+
+                                    <div class="recent-story-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-story-widget">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="recent-story-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="recent-story-title">
+                                        <h3>Lorem ipsum dolor sit amet</h3>
+                                    </div>
+
+                                    <div class="recent-story-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-story-widget">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="recent-story-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/tampaskyline.jpg"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="recent-story-title">
+                                        <h3>Lorem ipsum dolor sit amet</h3>
+                                    </div>
+
+                                    <div class="recent-story-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-story-widget">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="recent-story-thumbnail">
+                                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/naplesbeach.jpg"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="recent-story-title">
+                                        <h3>Lorem ipsum dolor sit amet</h3>
+                                    </div>
+
+                                    <div class="recent-story-excerpt">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="" class="read-more">read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="home-ad-1">
+                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/ad-puma.jpg" alt=""/>
+                    </div>
+
+                    <div class="home-recent-comments">
+                        <h4 class="widget-title"><span>Recent Comments</span></h4>
+
+                        <div class="recent-comment-widget">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <p> <a href="">Matt Cloey</a> on <a href=""> reasons why in-form Leicester City will finish the job and stay up</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="recent-comment-widget">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <p> <a href="">Matt Cloey</a> on <a href=""> reasons why in-form Leicester City will finish the job and stay up</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="recent-comment-widget">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <p> <a href="">Matt Cloey</a> on <a href=""> reasons why in-form Leicester City will finish the job and stay up</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="recent-comment-widget">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <p> <a href="">Matt Cloey</a> on <a href=""> reasons why in-form Leicester City will finish the job and stay up</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="recent-comment-widget">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <p> <a href="">Matt Cloey</a> on <a href=""> reasons why in-form Leicester City will finish the job and stay up</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="home-ad-1">
+                        <img src="<?= get_stylesheet_directory_uri(); ?>/images/ad-2.jpg" alt=""/>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+</div>
+<!-- end blog section home-->
+
+
+<div class="home-video-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/06/night2.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/08/bob.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/07/alico11.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/06/timthumb.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/05/mapleleaf4.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="home-video-widget">
+                    <img src="http://golfcoastmagazine.dev/wp-content/uploads/2016/05/upc2.jpg" alt=""/>
+
+                    <div class="video-widget-meta">
+                        <span><i class="fa fa-user" aria-hidden="true"></i> <a href="">Ryan Ruppert</a></span>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26th April</span>
+                        <span class="comment-count"><i class="fa fa-comment-o" aria-hidden="true"></i> 10</span>
+                        <a href=""><h3 class="video-title">Lorem ipsum dolor sit amet</h3></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- //custom development start  -->
 
 					<?php if ( is_active_sidebar( 'front_page_sections' ) ) { ?>
 						<div class="widgets_area">
