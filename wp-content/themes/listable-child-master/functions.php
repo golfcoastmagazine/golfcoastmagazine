@@ -12,7 +12,6 @@
 
 
 
-
 /**
  * Setup Listable Child Theme's textdomain.
  *
@@ -54,6 +53,8 @@ function listable_child_enqueue_styles() {
     wp_enqueue_style( 'fontawesome-style', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
     wp_enqueue_style( 'googlefont-pontano-style', 'https://fonts.googleapis.com/css?family=Pontano+Sans' );
     wp_enqueue_style( 'googlefont-roboto-style', 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i' );
+    wp_enqueue_style( 'googlefont-indie-flower-style', 'https://fonts.googleapis.com/css?family=Indie+Flower' );
+
 
 	// Here we are adding the child style.css while still retaining
 	// all of the parents assets (style.css, JS files, etc)
@@ -131,3 +132,167 @@ function listable_child_overwrite_files() {
 // The default priority of any action is 10
 
 */
+
+//require get_template_directory() . '/theme-options.php';
+require get_stylesheet_directory() . '/theme-options.php';
+
+add_image_size('story', 360, 220, true);
+add_image_size('story-featured', 100, 55, true);
+
+/**
+ * generate excerpt with custom length
+ *
+ * @param $charlength
+ */
+function the_excerpt_max_charlength($charlength) {
+    $excerpt = get_the_excerpt();
+    $charlength++;
+
+    if ( mb_strlen( $excerpt ) > $charlength ) {
+        $subex = mb_substr( $excerpt, 0, $charlength - 5 );
+        $exwords = explode( ' ', $subex );
+        $excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+        if ( $excut < 0 ) {
+            echo mb_substr( $subex, 0, $excut );
+        } else {
+            echo $subex;
+        }
+        echo '...';
+    } else {
+        echo $excerpt;
+    }
+}
+
+function view_all_posts( $example ) {
+    // Maybe modify $example in some way.
+    global $authordata;
+    if ( ! is_object( $authordata ) ) {
+        return;
+    }
+    $link = sprintf(
+        '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+        esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
+        esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+        'View all posts'
+    );
+    return $link;
+}
+add_filter( 'the_author_posts_link', 'view_all_posts' );
+
+function jptweak_remove_share() {
+    remove_filter( 'the_content', 'sharing_display',19 );
+    remove_filter( 'the_excerpt', 'sharing_display',19 );
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
+}
+
+add_action( 'loop_start', 'jptweak_remove_share' );
+
+/********************* AJAX FRAMEWORK ***************************/
+
+
+define('SN_AJAX_CONTROLLER',admin_url() . 'admin-ajax.php?action=do_ajax_html');  // 'url' parameters for jQuery.ajax()
+
+/*** for AJAX calls that return 'HTML' **/
+add_action('wp_ajax_nopriv_do_ajax_html', 'do_SN_AJAX');
+add_action('wp_ajax_do_ajax_html', 'do_SN_AJAX');
+
+function do_SN_AJAX() {
+
+    header('HTTP/1.1 200 OK');
+
+    switch ($_REQUEST['fn']) {
+
+        case "user-vault-status-handler":
+
+            //require get_template_directory() . '/vault/request/user-vault-status-handler.php';
+
+            exit;
+
+            break;
+
+        default:
+
+            exit ("No request made");
+
+    }
+
+    exit; // need exit.
+
+}
+
+
+
+/****************************************************************/
+
+
+function gm_custom_post_types() {
+
+    $labels = array(
+        'name'               => _x( 'Video', 'post type general name', 'your-plugin-textdomain' ),
+        'singular_name'      => _x( 'Video', 'post type singular name', 'your-plugin-textdomain' ),
+        'menu_name'          => _x( 'Video', 'admin menu', 'your-plugin-textdomain' ),
+        'name_admin_bar'     => _x( 'Video', 'add new on admin bar', 'your-plugin-textdomain' ),
+        'add_new'            => _x( 'Add New', 'Video', 'your-plugin-textdomain' ),
+        'add_new_item'       => __( 'Add New Video', 'your-plugin-textdomain' ),
+        'new_item'           => __( 'New Video', 'your-plugin-textdomain' ),
+        'edit_item'          => __( 'Edit Video', 'your-plugin-textdomain' ),
+        'view_item'          => __( 'View Video', 'your-plugin-textdomain' ),
+        'all_items'          => __( 'All Videos', 'your-plugin-textdomain' ),
+        'search_items'       => __( 'Search Videos', 'your-plugin-textdomain' ),
+        'parent_item_colon'  => __( 'Parent Videos:', 'your-plugin-textdomain' ),
+        'not_found'          => __( 'No videos found.', 'your-plugin-textdomain' ),
+        'not_found_in_trash' => __( 'No videos found in Trash.', 'your-plugin-textdomain' )
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'video' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'taxonomies'    => array(
+            'video_category'
+        ),
+        'supports'           => array( 'title', 'thumbnail')
+    );
+
+    register_post_type( 'video', $args );
+
+    $labels = array(
+        'name'              => _x( 'Categories', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Categories', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Categories' ),
+        'all_items'         => __( 'All Categories' ),
+        'parent_item'       => __( 'Parent Category' ),
+        'parent_item_colon' => __( 'Parent Category:' ),
+        'edit_item'         => __( 'Edit Category' ),
+        'update_item'       => __( 'Update Category' ),
+        'add_new_item'      => __( 'Add New Category' ),
+        'new_item_name'     => __( 'New Category Name' ),
+        'menu_name'         => __( 'Categories' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'video_category' ),
+    );
+
+    register_taxonomy( 'video_category', array( 'video' ), $args );
+
+}
+
+add_action('init', 'gm_custom_post_types');
+

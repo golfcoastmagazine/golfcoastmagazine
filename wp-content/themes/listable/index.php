@@ -19,6 +19,7 @@ get_header(); ?>
 
 			<?php
 			$page_for_posts = get_option( 'page_for_posts' );
+
 			$blog_has_featured_image = has_post_thumbnail( $page_for_posts );
 
 			if ( $blog_has_featured_image ) {
