@@ -63,6 +63,10 @@ function listable_child_enqueue_styles() {
 		array('listable-style') //make sure the the child's style.css comes after the parents so you can overwrite rules
 	);
 
+    wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ) );
+
+    wp_enqueue_script( 'init-js', get_stylesheet_directory_uri().'/assets/js/init.js', [], null, true );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'listable_child_enqueue_styles' );
@@ -136,7 +140,7 @@ function listable_child_overwrite_files() {
 //require get_template_directory() . '/theme-options.php';
 require get_stylesheet_directory() . '/theme-options.php';
 
-add_image_size('story', 360, 220, true);
+add_image_size('story', 360, 285, true);
 add_image_size('story-featured', 100, 55, true);
 
 /**

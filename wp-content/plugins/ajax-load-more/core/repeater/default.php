@@ -6,16 +6,13 @@
                                         <div class="blog-widget-top">
 
                                             <div class="widget-thumbnail">
-
+                                                <a href="<?php echo esc_url( get_permalink() ); ?>">
                                                 <?php the_post_thumbnail('story'); ?>
+                                                </a>
                                             </div>
 
                                             <div class="blog-widget-top-content">
-                                                <div class="blog-home-title">
-                                                    <a href="<?php echo esc_url( get_permalink() ); ?>">
-                                                        <h2><?php the_title(); ?></h2>
-                                                    </a>
-                                                </div>
+
 
                                                 <div class="blog-category">
 
@@ -41,7 +38,11 @@
 
                                         <div class="blog-excerpt">
 
-                                            <p><?php the_excerpt_max_charlength(120);?> <a href="<?php echo get_post_permalink(); ?>" class="read-more">read more <i class="fa fa-long-arrow-right"></i></a></p>
+                                            <div class="blog-home-title">
+                                                <a href="<?php echo esc_url( get_permalink() ); ?>">
+                                                    <h2><?php the_title(); ?></h2>
+                                                </a>
+                                            </div>
 
                                             <div class="blog-meta">
 

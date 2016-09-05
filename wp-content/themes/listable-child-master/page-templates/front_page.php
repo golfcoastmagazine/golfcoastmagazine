@@ -97,10 +97,10 @@ global $post; ?>
 
                         <?php if ( $the_query->have_posts() ) : ?>
 
-                            <!-- pagination here -->
 
-                            <!-- the loop -->
-                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                            <?php
+
+                            while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
                                 <div class="col-md-6 col-sm-6">
 
@@ -110,16 +110,13 @@ global $post; ?>
                                         <div class="blog-widget-top">
 
                                             <div class="widget-thumbnail">
-
+                                                <a href="<?php echo esc_url( get_permalink() ); ?>">
                                                 <?php the_post_thumbnail('story'); ?>
+                                                </a>
                                             </div>
 
                                             <div class="blog-widget-top-content">
-                                                <div class="blog-home-title">
-                                                    <a href="<?php echo esc_url( get_permalink() ); ?>">
-                                                        <h2><?php the_title(); ?></h2>
-                                                    </a>
-                                                </div>
+
 
                                                 <div class="blog-category">
 
@@ -145,7 +142,11 @@ global $post; ?>
 
                                         <div class="blog-excerpt">
 
-                                            <p><?php the_excerpt_max_charlength(120);?> <a href="<?php echo get_post_permalink(); ?>" class="read-more">read more <i class="fa fa-long-arrow-right"></i></a></p>
+                                            <div class="blog-home-title">
+                                                <a href="<?php echo esc_url( get_permalink() ); ?>">
+                                                    <h2><?php the_title(); ?></h2>
+                                                </a>
+                                            </div>
 
                                             <div class="blog-meta">
 
@@ -165,7 +166,11 @@ global $post; ?>
 
                                 </div>
 
-                            <?php endwhile; ?>
+                            <?php
+
+                            endwhile;
+
+                            ?>
                             <!-- end of the loop -->
 
                             <!-- pagination here -->
@@ -191,107 +196,9 @@ global $post; ?>
                 </div>
 
 
-                <!--     sidebar      -->
-                <div class="col-md-4 col-sm-4">
+                <div class="col-sm-4">
 
-                    <div class="featured-video">
-                        <h4 class="widget-title"><span>Featured Video</span></h4>
-
-                        <?php
-
-                        $args = array(
-                            'posts_per_page'    => 1,
-                            'post_status'    => 'publish',
-                            'post_type' => 'video',
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'video_category',
-                                    'field'    => 'slug',
-                                    'terms'    => 'featured',
-                                ),
-                            ),
-                        );
-
-                        // the query
-                        $the_query = new WP_Query( $args ); ?>
-
-                        <?php if ( $the_query->have_posts() ) : ?>
-
-                            <!-- pagination here -->
-
-                            <!-- the loop -->
-                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-                                <?php
-
-                                    echo get_post_meta(get_the_ID(),'gm_embedded_code', true);
-
-                                ?>
-
-                            <?php endwhile; ?>
-                            <!-- end of the loop -->
-
-                            <!-- pagination here -->
-
-                            <?php wp_reset_postdata(); ?>
-
-                        <?php else : ?>
-                            <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                        <?php endif; ?>
-
-                    </div>
-
-
-                    <div class="social-count">
-                        <h4 class="widget-title"><span>Stay Connected</span></h4>
-
-                        <?php
-                            echo do_shortcode( '[aps-counter]' );
-                        ?>
-
-                    </div>
-
-                    <div class="more-videos">
-                        <h4 class="widget-title"><span>More Videos</span></h4>
-
-                        <?php
-
-                        $args = array(
-                            'posts_per_page'    => 4,
-                            'post_status'    => 'publish',
-                            'post_type' => 'video'
-                        );
-
-                        // the query
-                        $the_query = new WP_Query( $args ); ?>
-
-                        <?php if ( $the_query->have_posts() ) : ?>
-
-                            <!-- pagination here -->
-
-                            <!-- the loop -->
-                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-                                <?php
-
-                                echo get_post_meta(get_the_ID(),'gm_embedded_code', true);
-
-                                ?>
-
-                            <?php endwhile; ?>
-                            <!-- end of the loop -->
-
-                            <!-- pagination here -->
-
-                            <?php wp_reset_postdata(); ?>
-
-                        <?php else : ?>
-                            <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                        <?php endif; ?>
-
-
-                    </div>
-
+                    <?php get_template_part( 'template-parts/content', 'sidebar' ); ?>
 
                 </div>
 
