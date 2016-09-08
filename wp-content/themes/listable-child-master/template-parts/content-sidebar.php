@@ -90,7 +90,7 @@
         'posts_per_page'    => 4,
         'post_status'    => 'publish',
         'post_type' => 'video',
-        'category__not_in' => array( 117 ),
+        'tag__not_in' => array( 117 ),
     );
 
     // the query
