@@ -510,6 +510,13 @@ h4.modal-video-title{
     margin-top: 20px;
 }
 
+.single-post .alignright {
+    margin-right: 0;
+}
+.alignright {
+    margin-right: 0;
+}
+
 
 /* media query */
 
