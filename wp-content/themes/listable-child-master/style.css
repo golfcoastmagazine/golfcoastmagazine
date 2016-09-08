@@ -517,6 +517,13 @@ h4.modal-video-title{
     margin-right: 0;
 }
 
+.single-post .alignleft {
+    margin-left: 0;
+}
+.alignleft {
+    margin-left: 0;
+}
+
 
 /* media query */
 
