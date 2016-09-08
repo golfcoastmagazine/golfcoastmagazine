@@ -90,7 +90,13 @@
         'posts_per_page'    => 4,
         'post_status'    => 'publish',
         'post_type' => 'video',
-        'tag__not_in' => array( 117 ),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'video_category',
+                'terms' => array( 117),
+                'operator' => 'NOT IN'
+            )
+        ),
     );
 
     // the query
