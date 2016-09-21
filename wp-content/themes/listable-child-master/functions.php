@@ -300,9 +300,3 @@ function gm_custom_post_types() {
 
 add_action('init', 'gm_custom_post_types');
 
-
-add_filter( 'wp_image_editors', 'change_graphic_lib' );
-
-function change_graphic_lib($array) {
-    return array( 'WP_Image_Editor_GD', 'WP_Image_Editor_Imagick' );
-}
