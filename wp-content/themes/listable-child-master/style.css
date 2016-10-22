@@ -186,7 +186,7 @@ body{
     line-height: 27px;
     padding: 0;
     margin: 0;
-    text-transform: capitalize !important;
+    text-transform: uppercase !important;
 }
 
 .blog-home-title a:hover{
@@ -329,7 +329,7 @@ a.apsc-youtube-icon {
 }
 
 h4.video-title{
-    text-transform: capitalize;
+    text-transform: uppercase;
     line-height: 25px;
     font-weight: 700;
 }
