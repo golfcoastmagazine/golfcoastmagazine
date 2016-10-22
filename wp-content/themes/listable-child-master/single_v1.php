@@ -12,25 +12,40 @@ get_header(); ?>
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
 
-            <div class="container">
+            <div class="section-top">
 
-                <div class="col-md-12">
+                <?php the_post_thumbnail(); ?>
 
-                    <div class="published-by">
-                        <span><i class="fa fa-clock-o" aria-hidden="true"></i>  <time class="updated" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date(); ?></time></span>
+                    <div class="story-header">
+                        <div class="story-cat">
+
+                            <?php
+
+
+                            $categories = get_the_category(get_the_ID());
+
+                            foreach($categories as $cat){
+
+                                echo '<a href=" '.get_category_link( $cat->cat_ID ).' " class="btn gcm-btn">'.$cat->name.'</a>';
+                            }
+                            ?>
+
+                        </div>
+                        <h1 class="story-title"><?php the_title(); ?></h1>
+                        <div class="published-by">
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i>  <time class="updated" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date(); ?></time></span>
+                        </div>
                     </div>
 
-                    <h1 class="story-title"><?php the_title(); ?></h1>
-
-                </div>
 
             </div>
-
 
             <div class="container">
 
                 <div class="story-container">
                     <div class="col-sm-8">
+
+                        <?php the_post_thumbnail(); ?>
 
                         <?php while ( have_posts() ) : the_post(); ?>
 
@@ -40,8 +55,6 @@ get_header(); ?>
                                 <span><i class="fa fa-user" aria-hidden="true"></i> <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?= get_the_author(); ?></a></span>
                                 <span class="story-share">Share this story: <i class="fa fa-facebook-square" aria-hidden="true"></i><i class="fa fa-twitter-square" aria-hidden="true"></i> </span>
                             </div>
-
-                            <?php the_post_thumbnail(); ?>
 
                             <div class="story-content">
 
